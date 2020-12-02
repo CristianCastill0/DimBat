@@ -34,39 +34,39 @@
 %     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-function varargout = CurvaCarga(varargin)
+function varargout = CurvaCarga_eng(varargin)
 
-% CURVACARGA MATLAB code for CurvaCarga.fig
-%      CURVACARGA, by itself, creates a new CURVACARGA or raises the existing
+% CURVACARGA_ENG MATLAB code for CurvaCarga_eng.fig
+%      CURVACARGA_ENG, by itself, creates a new CURVACARGA_ENG or raises the existing
 %      singleton*.
 %
-%      H = CURVACARGA returns the handle to a new CURVACARGA or the handle to
+%      H = CURVACARGA_ENG returns the handle to a new CURVACARGA_ENG or the handle to
 %      the existing singleton*.
 %
-%      CURVACARGA('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in CURVACARGA.M with the given input arguments.
+%      CURVACARGA_ENG('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in CURVACARGA_ENG.M with the given input arguments.
 %
-%      CURVACARGA('Property','Value',...) creates a new CURVACARGA or raises the
+%      CURVACARGA_ENG('Property','Value',...) creates a new CURVACARGA_ENG or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before CurvaCarga_OpeningFcn gets called.  An
+%      applied to the GUI before CurvaCarga_eng_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to CurvaCarga_OpeningFcn via varargin.
+%      stop.  All inputs are passed to CurvaCarga_eng_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help CurvaCarga
+% Edit the above text to modify the response to help CurvaCarga_eng
 
-% Last Modified by GUIDE v2.5 17-Sep-2020 10:59:35
+% Last Modified by GUIDE v2.5 18-Sep-2020 09:44:22
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
     'gui_Singleton',  gui_Singleton, ...
-    'gui_OpeningFcn', @CurvaCarga_OpeningFcn, ...
-    'gui_OutputFcn',  @CurvaCarga_OutputFcn, ...
+    'gui_OpeningFcn', @CurvaCarga_eng_OpeningFcn, ...
+    'gui_OutputFcn',  @CurvaCarga_eng_OutputFcn, ...
     'gui_LayoutFcn',  [] , ...
     'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -80,22 +80,22 @@ else
 end
 % End initialization code - DO NOT EDIT
 
-% --- Executes just before CurvaCarga is made visible.
-function CurvaCarga_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before CurvaCarga_eng is made visible.
+function CurvaCarga_eng_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to CurvaCarga (see VARARGIN)
+% varargin   command line arguments to CurvaCarga_eng (see VARARGIN)
 
-% Choose default command line output for CurvaCarga
+% Choose default command line output for CurvaCarga_eng
 handles.output = hObject;
 global abierto control1 control2;
 abierto=1;
 % Update handles structure
 guidata(hObject, handles);
 
-% UIWAIT makes CurvaCarga wait for user response (see UIRESUME)
+% UIWAIT makes CurvaCarga_eng wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 setGlobalx(1);
 %setGlobalelec(0);
@@ -109,7 +109,7 @@ control2=0;
 set(handles.pushbutton5,'Visible','on');
 
 % --- Outputs from this function are returned to the command line.
-function varargout = CurvaCarga_OutputFcn(hObject, eventdata, handles)
+function varargout = CurvaCarga_eng_OutputFcn(hObject, eventdata, handles)
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -132,20 +132,20 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 global imp control1 control2;
 try
     
-    [file,path]=uigetfile({'*.xlsx;*.xls'},'Seleccione el archivo');
+    [file,path]=uigetfile({'*.xlsx;*.xls'},'Select file');
     arc=file;
     disp(imp)    
-    m_pr=msgbox('Cargando archivo','Cargando...','warn');
+    m_pr=msgbox('Loading file','Loading...','warn');
     imp=importdata(fullfile(path,file));
     delete(m_pr)
-    msgbox('Archivo subido exitosamente','Subida exitosa','help');
+    msgbox('File uploaded successfully','Successful upload','help');
     set(handles.text5,'Visible','on');
-    set(handles.text5,'String',fullfile('Archivo subido: ',file));
+    set(handles.text5,'String',fullfile('Uploaded file: ',file));
     set(handles.pushbutton3,'Visible','on');
     control1=1;
     control2=0;
 catch
-    errordlg('Error durante la carga del archivo','Error');
+    errordlg('Error while loading the file','Error');
 end
 disp(imp);
 
@@ -187,7 +187,7 @@ close;
 % --- Executes on button press in pushbutton2.
 function pushbutton2_Callback(hObject, eventdata, handles)
 
-disp('Botón agregar');
+disp('Add button');
 disp('cont antes');
 pulso=get(hObject,'Value');
 r = getGlobalx;
@@ -200,7 +200,7 @@ if pulso==1
     fh=get(handles.popupmenu2,'Value');
     %[pr]=[elec];
     tou=tou/60;
-    disp('Tiempo');
+    disp('Time');
     disp(tou);
     pd=pd*tou;
     
@@ -208,11 +208,11 @@ if pulso==1
     PV=isnan(pd);
     
     if TV==1
-        msgbox('Debe indicar el tiempo de uso del electrodoméstico.','Error','error');
+        msgbox('You must indicate the time of use of the appliance.','Error','error');
     else
         
         if PV==1
-            msgbox('Debe indicar la potencia del electrodoméstico.','Error','error');
+            msgbox('You must indicate the power of the appliance.','Error','error');
         else
             
             
@@ -222,7 +222,7 @@ if pulso==1
     val=r+1;
     setGlobalx(val);
     %cont=cont+1;
-    msgbox('Electrodoméstico agregado correctamente.','Información','help');
+    msgbox('Appliance added correctly.','Information','help');
         end
     end
 end
@@ -319,7 +319,7 @@ imp=0;
 
 % --- Executes on button press in pushbutton4.
 function pushbutton4_Callback(hObject, eventdata, handles)
-disp('Botón agregar');
+disp('Add button');
 disp('cont antes');
 
 r = getGlobalx;
@@ -398,7 +398,7 @@ global imp control1 control2 canc;
 imp=0;
 canc=1;
 close;
-MP;
+MP_eng;
 
 
 
@@ -410,13 +410,13 @@ function pushbutton6_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 global imp;
 if imp==0
-    msgbox('Antes de poder borrar un electrodoméstico debe agregarlo.','Error','error');
+    msgbox('Before you can delete an appliance you must add it.','Error','error');
 else
     imp=0;
     disp(imp);
     set(handles.edit1,'String',' ');
     set(handles.edit2,'String',' ');
-    msgbox('Datos ingresados borrados correctamente.','Información','help');
+    msgbox('Entered data deleted correctly.','Information','help');
 end
 
 
@@ -425,4 +425,4 @@ function pushbutton7_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton7 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-AyCurva;
+AyCurva_eng;

@@ -35,38 +35,38 @@
 
 
 
-function varargout = MP(varargin)
-% MP MATLAB code for MP.fig
-%      MP, by itself, creates a new MP or raises the existing
+function varargout = MP_eng(varargin)
+% MP_eng MATLAB code for MP_eng.fig
+%      MP_eng, by itself, creates a new MP_eng or raises the existing
 %      singleton*.
 %
-%      H = MP returns the handle to a new MP or the handle to
+%      H = MP_eng returns the handle to a new MP_eng or the handle to
 %      the existing singleton*.
 %
-%      MP('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in MP.M with the given input arguments.
+%      MP_eng('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in MP_eng.M with the given input arguments.
 %
-%      MP('Property','Value',...) creates a new MP or raises the
+%      MP_eng('Property','Value',...) creates a new MP_eng or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before MP_OpeningFcn gets called.  An
+%      applied to the GUI before MP_eng_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to MP_OpeningFcn via varargin.
+%      stop.  All inputs are passed to MP_eng_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help MP
+% Edit the above text to modify the response to help MP_eng
 
-% Last Modified by GUIDE v2.5 10-Dec-2019 11:04:11
+% Last Modified by GUIDE v2.5 18-Sep-2020 09:31:45
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
     'gui_Singleton',  gui_Singleton, ...
-    'gui_OpeningFcn', @MP_OpeningFcn, ...
-    'gui_OutputFcn',  @MP_OutputFcn, ...
+    'gui_OpeningFcn', @MP_eng_OpeningFcn, ...
+    'gui_OutputFcn',  @MP_eng_OutputFcn, ...
     'gui_LayoutFcn',  [] , ...
     'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -81,21 +81,21 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before MP is made visible.
-function MP_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before MP_eng is made visible.
+function MP_eng_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to MP (see VARARGIN)
+% varargin   command line arguments to MP_eng (see VARARGIN)
 
-% Choose default command line output for MP
+% Choose default command line output for MP_eng
 handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
 
-% UIWAIT makes MP wait for user response (see UIRESUME)
+% UIWAIT makes MP_eng wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 set(handles.text4,'Visible','off');
 set(handles.pushbutton1,'Visible','off');
@@ -127,7 +127,7 @@ handles.im4=imread('DimBat_resources/LogoFISINFOR.jpg');
 imagesc(handles.im4);
 axis off
 % --- Outputs from this function are returned to the command line.
-function varargout = MP_OutputFcn(hObject, eventdata, handles)
+function varargout = MP_eng_OutputFcn(hObject, eventdata, handles)
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -162,21 +162,21 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-CurvaCarga;
+CurvaCarga_eng;
 global control1  control2 canc;
 uiwait;
 if control1==0 && control2 == 0
     if canc==1
-        msgbox('Para efectuar el análisis se debe tener una curva de carga, por favor agréguela','Error','error');
+        msgbox('To perform the analysis you must have a load curve, please add','Error','error');
         uiwait;
         set(handles.text4,'Visible','on');
         set(handles.pushbutton1,'Visible','on');
         set(handles.pushbutton2,'Visible','off');
     else
     set(handles.pushbutton2,'Visible','off');
-    msgbox('Para efectuar el análisis se debe tener una curva de carga, por favor agréguela','Error','error');
+    msgbox('To perform the analysis you must have a load curve, please add','Error','error');
     uiwait;
-    CurvaCarga;
+    CurvaCarga_eng;
     end
 else
     disp('Completado');
@@ -200,15 +200,15 @@ disp(u4);
 if control1==1 || control2==1
     
     if u1==1
-        Residencial;
+        Residencial_eng;
     end
 else
-    msgbox('Para efectuar el análisis se debe tener una curva de carga, por favor agréguela','Error','error');
+    msgbox('To perform the analysis you must have a load curve, please add','Error','error');
     uiwait;
-    CurvaCarga;
+    CurvaCarga_eng;
 end
 if u4==1
-    msgbox('Antes de efectuar el análisis debe seleccionar un tipo de usuario','Error','error');
+    msgbox('Before performing the analysis you must select a type of user','Error','error');
 end
 
 
@@ -223,7 +223,7 @@ set(handles.text4,'Visible','off');
 set(handles.pushbutton1,'Visible','off');
 set(handles.pushbutton2,'Visible','off');
 icono=imread('DimBat_resources/Trabajando.jpg');
-msgbox('Opción en desarrollo.','Error','custom',icono);
+msgbox('Option under development.','Error','custom',icono);
 
 
 % --- Executes on button press in radiobutton3.
@@ -237,4 +237,4 @@ set(handles.text4,'Visible','off');
 set(handles.pushbutton1,'Visible','off');
 set(handles.pushbutton2,'Visible','off');
 icono=imread('DimBat_resources/Trabajando.jpg');
-msgbox('Opción en desarrollo.','Error','custom',icono);
+msgbox('Option under development.','Error','custom',icono);

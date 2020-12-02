@@ -24,49 +24,49 @@
 %     it under the terms of the GNU General Public License as published by
 %     the Free Software Foundation, either version 3 of the License, or
 %     (at your option) any later version.
-%
+% 
 %     DimBat is distributed in the hope that it will be useful,
 %     but WITHOUT ANY WARRANTY; without even the implied warranty of
 %     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 %     GNU General Public License for more details.
-%
+% 
 %     You should have received a copy of the GNU General Public License
 %     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-function varargout = Residencial(varargin)
+function varargout = Residencial_eng(varargin)
 
-% RESIDENCIAL MATLAB code for Residencial.fig
-%      RESIDENCIAL, by itself, creates a new RESIDENCIAL or raises the existing
+% RESIDENCIAL_ENG MATLAB code for Residencial_eng.fig
+%      RESIDENCIAL_ENG, by itself, creates a new RESIDENCIAL_ENG or raises the existing
 %      singleton*.
 %
-%      H = RESIDENCIAL returns the handle to a new RESIDENCIAL or the handle to
+%      H = RESIDENCIAL_ENG returns the handle to a new RESIDENCIAL_ENG or the handle to
 %      the existing singleton*.
 %
-%      RESIDENCIAL('CALLBACK',hObject,eventData,handles,...) calls the local
-%      function named CALLBACK in RESIDENCIAL.M with the given input arguments.
+%      RESIDENCIAL_ENG('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in RESIDENCIAL_ENG.M with the given input arguments.
 %
-%      RESIDENCIAL('Property','Value',...) creates a new RESIDENCIAL or raises the
+%      RESIDENCIAL_ENG('Property','Value',...) creates a new RESIDENCIAL_ENG or raises the
 %      existing singleton*.  Starting from the left, property value pairs are
-%      applied to the GUI before Residencial_OpeningFcn gets called.  An
+%      applied to the GUI before Residencial_eng_OpeningFcn gets called.  An
 %      unrecognized property name or invalid value makes property application
-%      stop.  All inputs are passed to Residencial_OpeningFcn via varargin.
+%      stop.  All inputs are passed to Residencial_eng_OpeningFcn via varargin.
 %
 %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
 %      instance to run (singleton)".
 %
 % See also: GUIDE, GUIDATA, GUIHANDLES
 
-% Edit the above text to modify the response to help Residencial
+% Edit the above text to modify the response to help Residencial_eng
 
-% Last Modified by GUIDE v2.5 16-Sep-2020 14:44:47
+% Last Modified by GUIDE v2.5 18-Sep-2020 10:25:07
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
     'gui_Singleton',  gui_Singleton, ...
-    'gui_OpeningFcn', @Residencial_OpeningFcn, ...
-    'gui_OutputFcn',  @Residencial_OutputFcn, ...
+    'gui_OpeningFcn', @Residencial_eng_OpeningFcn, ...
+    'gui_OutputFcn',  @Residencial_eng_OutputFcn, ...
     'gui_LayoutFcn',  [] , ...
     'gui_Callback',   []);
 if nargin && ischar(varargin{1})
@@ -81,26 +81,26 @@ end
 % End initialization code - DO NOT EDIT
 
 
-% --- Executes just before Residencial is made visible.
-function Residencial_OpeningFcn(hObject, eventdata, handles, varargin)
+% --- Executes just before Residencial_eng is made visible.
+function Residencial_eng_OpeningFcn(hObject, eventdata, handles, varargin)
 % This function has no output args, see OutputFcn.
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-% varargin   command line arguments to Residencial (see VARARGIN)
+% varargin   command line arguments to Residencial_eng (see VARARGIN)
 
-% Choose default command line output for Residencial
+% Choose default command line output for Residencial_eng
 handles.output = hObject;
 
 % Update handles structure
 guidata(hObject, handles);
 
-% UIWAIT makes Residencial wait for user response (see UIRESUME)
+% UIWAIT makes Residencial_eng wait for user response (see UIRESUME)
 % uiwait(handles.figure1);
 
 
 % --- Outputs from this function are returned to the command line.
-function varargout = Residencial_OutputFcn(hObject, eventdata, handles)
+function varargout = Residencial_eng_OutputFcn(hObject, eventdata, handles)
 % varargout  cell array for returning output args (see VARARGOUT);
 % hObject    handle to figure
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -135,8 +135,8 @@ if control1==1
     plot(hrs,cnm,'k','LineWidth',2);
     axis([1 24 0 inf]);
     %axis auto;
-    xlabel('Hora');
-    ylabel('Consumo (Wh)');
+    xlabel('Time');
+    ylabel('Consumption (Wh)');
     grid on;
     % disp(pmax);
     
@@ -153,8 +153,8 @@ if control2==1
     axes(handles.axes1);
     plot(hrs,cnm,'-o');
     axis([1 24 0 inf]);
-    xlabel('Hora');
-    ylabel('Consumo (Wh)');
+    xlabel('Time');
+    ylabel('Consumption (Wh)');
 end
 
 
@@ -186,7 +186,7 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-AyResi;
+AyResi_eng;
 uiwait;
 
 
@@ -205,29 +205,29 @@ if control1==1
     
     pd=str2num(get(handles.edit1,'string'));
     if isempty(pd)
-        msgbox('Por favor ingrese un valor de profundidad de descarga.','Error','error');
+        msgbox('Please enter a depth of discharge value.','Error','error');
         return;
     end
     pd=pd/100;
     if pd>=1
-        msgbox('La profundidad de descarga no puede ser igual o mayor al 100%.','Error','error');
+        msgbox('The depth of discharge cannot be equal to or greater than 100%.','Error','error');
         return;
     end
     if pd<=0
-        msgbox('La profundidad de descarga no puede ser igual o menor al 0%.','Error','error');
+        msgbox('The depth of discharge cannot be equal to or less than 0%.','Error','error');
         return;
     end
     
     fsd=str2num(get(handles.edit2,'string'));
     if isempty(fsd)
-        msgbox('Por favor ingrese un valor para el factor de sobredimensionamiento.','Error','error');
+        msgbox('Please enter a value for the oversize factor.','Error','error');
         return;
     end
     fsd=fsd/100;
-    
+        
     pdr=1-pd;
     pdu=1+pdr;
-    
+        
     pad=(ptot*pdu);
     %disp(psis);
     
@@ -282,29 +282,29 @@ if control2==1
     
     pd=str2num(get(handles.edit1,'string'));
     if isempty(pd)
-        msgbox('Por favor ingrese un valor de profundidad de descarga.','Error','error');
+        msgbox('Please enter a depth of discharge value.','Error','error');
         return;
     end
     pd=pd/100;
     if pd>=1
-        msgbox('La profundidad de descarga no puede ser igual o mayor al 100%.','Error','error');
+        msgbox('The depth of discharge cannot be equal to or greater than 100%.','Error','error');
         return;
     end
     if pd<=0
-        msgbox('La profundidad de descarga no puede ser igual o menor al 0%.','Error','error');
+        msgbox('The depth of discharge cannot be equal to or less than 0%.','Error','error');
         return;
     end
     
     fsd=str2num(get(handles.edit2,'string'));
     if isempty(fsd)
-        msgbox('Por favor ingrese un valor para el factor de sobredimensionamiento.','Error','error');
+        msgbox('Please enter a value for the oversize factor.','Error','error');
         return;
     end
     fsd=fsd/100;
     
     pdr=1-pd;
     pdu=1+pdr;
-    
+        
     pad=(ptot*pdu);
     %disp(psis);
     
@@ -348,15 +348,8 @@ if control2==1
     set(handles.text8,'Visible','on');
     set(handles.text9,'Visible','on');
     set(handles.text19,'Visible','on');
-    
-    
-    
-    
+   
 end
-
-
-
-
 %  disp("profundidad "+pd);
 %  pdr=1-pd;
 %  disp("profundidad real "+pdr);
@@ -400,7 +393,7 @@ if cb_pd==0
     set(handles.text2,'Enable','off');
     set(handles.text3,'Enable','off');
     set(handles.text18,'Visible','off');
-    
+   
 else
     set(handles.edit1,'Enable','on');
     set(handles.edit1,'String',' ');
@@ -419,10 +412,10 @@ function checkbox2_Callback(hObject, eventdata, handles)
 % Hint: get(hObject,'Value') returns toggle state of checkbox2
 cb_fs=get(handles.checkbox2,'Value');
 if cb_fs==0
-    set(handles.edit2,'Enable','off');
-    set(handles.edit2,'String','0');
-    set(handles.text11,'Enable','off');
-    set(handles.text12,'Enable','off');
+   set(handles.edit2,'Enable','off');
+   set(handles.edit2,'String','0');
+   set(handles.text11,'Enable','off');
+   set(handles.text12,'Enable','off');
 else
     set(handles.edit2,'Enable','on');
     set(handles.edit2,'String',' ');
@@ -459,13 +452,13 @@ function pushbutton3_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-msgbox('Es el porcentaje de la capacidad total de la batería que se usa durante un ciclo de carga/descarga. Para más información vaya al menú de ayuda.',...
-    'Profundidad de descarga.','help');
+msgbox('It is the percentage of the total battery capacity that is used during a charge/discharge cycle. For more information go to the help menu.',...
+    'Depth of discharge.','help');
 
 % --- Executes on button press in pushbutton4.
 function pushbutton4_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton4 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-msgbox('Es el porcentaje adicional de la energía total que será almacenado. Para más información vaya al menú de ayuda.',...
-    'Factor de sobredimensionamiento','help');
+msgbox('It is the additional percentage of the total energy that will be stored. For more information go to the help menu.',...
+    'Oversizing factor','help');
