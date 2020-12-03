@@ -2,7 +2,6 @@ REQUIREMENTS - REQUERIMIENTOS
 
 This software needs for its correct execution:
     Microsoft Windows 10 x64 (64 bits)
-    MATLAB R2020B
     Visual C++ Redistributable for Visual Studio 2015 x64 (64 bits), if you don't have it installed you can get it at: 
         https://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x64.exe
 
@@ -10,6 +9,5 @@ This software needs for its correct execution:
 
 Este software necesita para su correcta ejecución:
     Microsoft Windows 10 x64 (64 bits)
-    MATLAB R2020B
     Visual C++ Redistributable para Visual Studio 2015 x64 (64 bits), si no dispone de este instalado puede obtenerlo en: 
         https://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x64.exe
